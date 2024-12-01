@@ -1,0 +1,29 @@
+\documentclass[11pt,twoside]{article}
+
+\begin{document}
+\title{Bitrate discussion}
+\author{James Landry}
+\date{November 30, 2024}
+\maketitle
+
+This document is designed to walk through the Bitrate formula for the NASA ADC challenge and explain it.
+
+For the ADC challenge, we are calculating the satellite's ability to communicate with four different Deep Space Network dishes on earth (WPSA, DS24, DS34, and DS54). The dishes have different diameters, with the DS ones having a diameter of 32 m and the WPSA dish with a diameter of 12 m.
+
+The basic equation for the Bitrate calculation is
+\begin{equation}
+    B_n = \frac{P_t G_t G_r \lambda^2}{(4 \pi R)^2 k_B T_s L}
+\end{equation}
+In this case, $P_t$ is the power, $G_t$ is the transmit gain of the antenna on the satellite, $G_r$ is the receive gain of the Deep Space Network antenna, $\lambda$ is the wavelength of the communcations, $R$ is the slant rage from the satellite to Deep Space Network antenna, $k_B$ is Boltzmann's constant, $T_s$ is the system temperature, and $L$ is the transmit losses.
+
+So far, so good. But some of these quantities are expressed in regular units, and some are expressed in decibels and you can't mix those easily. So the equation they show you has a number of conversion factors between decibels and regular units.
+
+For example, to convert a value $x$ between regular units and decibels, do this
+\begin{eqnarray}
+    x_{dB} & = & 10 log_{10}(x) \\
+    For \, x & = & 20 \\
+    x_{dB} & = & 10 log_{10}(20) = 10 * 1.3010 \approx 13
+\end{eqnarray}
+    
+
+\end{document}
