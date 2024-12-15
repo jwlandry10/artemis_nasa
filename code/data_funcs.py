@@ -16,7 +16,7 @@ def find_best_dsn(sat_dsn_ranges,dsn_viz,dsn_antennas):
     eta = 0.55 # efficiency gain
     lambda_t = 0.136363636 # m, wavelength
     kB = -228.6 # dBW/K/Hz Boltzmann Constant (in Decibel Watts per degree Kelvin per Hertz, dBW/K/Hz)
-    Ts = 22 # K
+    Ts = 222 # K
 
     bitrate = np.zeros((np.size(sat_dsn_ranges,0), np.size(sat_dsn_ranges,1)))
     for (i, slant_ranges) in enumerate(sat_dsn_ranges):

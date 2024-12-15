@@ -4,6 +4,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import cartopy.crs as ccrs
 from data_funcs import *
 
 traj = pd.read_csv("/home/jwlandry/src/artemis_nasa/data/FY25 ADC HS Data Updated.csv")
@@ -134,5 +135,19 @@ plt.plot(traj['MISSION ELAPSED TIME (min)'], traj['MASS (kg)'])
 ax = plt.gca()
 ax.set_xlabel('Time (mins)')
 ax.set_ylabel('Mass (kg)')
+
+# plot locations on Map using cartopy
+plt.figure()
+ax = plt.axes(projection=ccrs.Mollweide())
+ax.stock_img()
+ds24_lon, ds24_lat = -116.875, 35.3399
+ds34_lon, ds34_lat = 148.982, -35.3985
+ds54_lon, ds54_lat = -4.2541, 40.4256
+wpsa_lon, wpsa_lat = -75.475, 37.9273
+
+plt.plot([ds24_lon, ds34_lon, ds54_lon, wpsa_lon], [ds24_lat, ds34_lat, ds54_lat, wpsa_lat],
+         marker='o', linestyle='None', color='red',
+         transform=ccrs.PlateCarree(),
+         )
 
 plt.show()
